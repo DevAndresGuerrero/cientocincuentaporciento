@@ -30,10 +30,10 @@
                         class="form-control form-control-user"
                         id="exampleFirstName"
                         placeholder="Fullname"
-                        v-model="form.name"
+                        v-model="form.fullname"
                       />
-                      <small class="text-danger" v-if="errors.name">
-                        {{ errors.name[0] }}
+                      <small class="text-danger" v-if="errors.fullname">
+                        {{ errors.fullname[0] }}
                       </small>
                     </div>
 
@@ -47,6 +47,20 @@
                       />
                       <small class="text-danger" v-if="errors.email">
                         {{ errors.email[0] }}
+                      </small>
+                    </div>
+
+                    <div class="form-group">
+                      <select
+                        class="form-control"
+                        v-model="form.city"
+                      >
+                        <option value="Cartagena">Cartagena</option>
+                        <option value="Medellin">Medellin</option>
+                        <option value="Pasto">Pasto</option>
+                      </select>
+                      <small class="text-danger" v-if="errors.city">
+                        {{ errors.city[0] }}
                       </small>
                     </div>
 
@@ -117,7 +131,7 @@
     data() {
       return {
         form: {
-          name: '',
+          fullname: '',
           email: '',
           password: '',
           password_confirmation: '',

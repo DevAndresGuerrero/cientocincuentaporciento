@@ -10,18 +10,20 @@
                 <h1 class="h4 text-gray-900 mb-4">Register</h1>
               </div>
               <form class="user" @submit.prevent="signup">
+
                 <div class="form-group">
                   <input
                     type="text"
                     class="form-control form-control-user"
                     id="exampleFirstName"
                     placeholder="Fullname"
-                    v-model="form.name"
+                    v-model="form.fullname"
                   />
-                  <small class="text-danger" v-if="errors.name">
-                    {{ errors.name[0] }}
+                  <small class="text-danger" v-if="errors.fullname">
+                    {{ errors.fullname[0] }}
                   </small>
                 </div>
+
                 <div class="form-group">
                   <input
                     type="email"
@@ -34,6 +36,20 @@
                     {{ errors.email[0] }}
                   </small>
                 </div>
+
+                <!-- Select: City -->
+                <div class="form-group">
+                  <select v-model="form.city" class="form-control">
+                    <option value="Cartagena">Cartagena</option>
+                    <option value="Medellin">Medellin</option>
+                    <option value="Pasto">Pasto</option>
+                  </select>
+                  <small class="text-danger" v-if="errors.city">
+                    {{ errors.city[0] }}
+                  </small>
+                </div>
+                <!-- End Select: City -->
+
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
                     <input
@@ -57,6 +73,7 @@
                     />
                   </div>
                 </div>
+
                 <button
                   type="submit"
                   class="btn btn-primary btn-user btn-block">
@@ -66,7 +83,7 @@
               <hr />
               <div class="text-center">
                 <router-link
-                  :to="{name:'/'}"
+                  :to="{name:'login'}"
                   class="font-weight-bold small">
                   Already have an account? Login!
                 </router-link>
@@ -97,10 +114,11 @@ export default {
   data() {
     return {
       form: {
-        name: null,
+        fullname: null,
         email: null,
         password: null,
         password_confirmation: null,
+        city: null,
       },
       errors:{}
     };

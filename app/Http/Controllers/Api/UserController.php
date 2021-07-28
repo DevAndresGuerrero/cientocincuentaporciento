@@ -30,13 +30,13 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $validateData = $request->validate([
-            'name' => ['required'],
+            'fullname' => ['required'],
             'email' => ['required', 'email', 'unique:users', 'max:150'],
             'password' => ['required', 'min:6', 'max:16', 'confirmed'],
         ]);
 
         $data = [];
-        $data['name'] = $request->name;
+        $data['fullname'] = $request->fullname;
         $data['email'] = $request->email;
         $data['password'] = Hash::make($request->password);
 
@@ -68,7 +68,7 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $rules = [
-            'name' => ['required'],
+            'fullname' => ['required'],
             'email' => ['required', 'email', 'unique:users,id,'.$user->id, 'max:150'],
         ];
 
@@ -81,7 +81,7 @@ class UserController extends Controller
         $validateData = $request->validate($rules);
 
         $data = [];
-        $data['name'] = $request->name;
+        $data['fullname'] = $request->fullname;
         $data['email'] = $request->email;
 
         if ($request->password && $request->password_confirmation) {

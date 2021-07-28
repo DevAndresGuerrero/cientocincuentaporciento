@@ -10,10 +10,10 @@ let userCreate = require('./components/User/create.vue').default;
 let userEdit = require('./components/User/edit.vue').default;
 
 export const routes = [
-    { path: '/', component: Login, name: '/'},
+    { path: '/login', component: Login, name: 'login'},
     { path: '/home', component: Home, name: 'home'},
     { path: '/logout', component: Logout, name: 'logout'},
-    { path: '/register', component: Register, name: 'register'},
+    { path: '/', component: Register, name: '/'},
     { path: '/forgot', component: ForgotPassword, name: 'forgot'},
 
     // Routes User

@@ -36,14 +36,14 @@
                   <hr />
                   <div class="text-center">
                     <router-link
-                      :to="{name:'register'}"
+                      :to="{name:'/'}"
                       class="font-weight-bold small">
                       Create an Account!
                     </router-link>
                   </div>
                   <div class="text-center">
                     <router-link
-                      :to="{name:'/'}"
+                      :to="{name:'login'}"
                       class="font-weight-bold small">
                       Already have an account? Login!
                     </router-link>

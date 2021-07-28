@@ -60,7 +60,7 @@
                   <hr />
                   <div class="text-center">
                     <router-link
-                      :to="{name:'register'}"
+                      :to="{name:'/'}"
                       class="font-weight-bold small">
                       Create an Account!
                     </router-link>

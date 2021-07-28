@@ -25,7 +25,7 @@
       <nav
         id="sidebar"
         style="display: none;"
-        v-show="$route.path === '/' || $route.path === '/register' || $route.path === '/forgot' ? false : true">
+        v-show="$route.path === '/' || $route.path === '/login' || $route.path === '/forgot' ? false : true">
 
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
@@ -59,6 +59,14 @@
             Modules
           </div>
 
+          <!-- Nav Item - Rombo -->
+          <li class="nav-item">
+            <router-link class="nav-link" :to="{name:'home'}">
+              <i class="fas fa-fw fa-chart-pie"></i>
+              <span>Rombo</span>
+            </router-link>
+          </li>
+
           <!-- Nav Item - User Collapse Menu -->
           <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser" aria-expanded="true"
@@ -89,7 +97,7 @@
             id="topbar"
             style="display: none;"
             class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
-            v-show="$route.path === '/' || $route.path === '/register' || $route.path === '/forgot' ? false : true">
+            v-show="$route.path === '/' || $route.path === '/login' || $route.path === '/forgot' ? false : true">
 
             <!-- Sidebar Toggle (Topbar) -->
             <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">

@@ -57,7 +57,6 @@ class AuthController extends Controller
     public function logout()
     {
         auth()->logout();
-
         return response()->json(['message' => 'Successfully logged out']);
     }
 
@@ -74,15 +73,17 @@ class AuthController extends Controller
     public function signup(Request $request)
     {
         $validateData = $request->validate([
-            'name' => ['required'],
+            'fullname' => ['required'],
             'email' => ['required', 'email', 'unique:users', 'max:150'],
             'password' => ['required', 'min:6', 'max:16', 'confirmed'],
+            'city' => ['required', 'in:Cartagena,Medellin,Pasto'],
         ]);
 
         $data = [];
-        $data['name'] = $request->name;
+        $data['fullname'] = $request->fullname;
         $data['email'] = $request->email;
         $data['password'] = Hash::make($request->password);
+        $data['city'] = $request->city;
 
         User::create($data);
 
@@ -102,7 +103,7 @@ class AuthController extends Controller
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => auth()->factory()->getTTL() * 60,
-            'name' => auth()->user()->name,
+            'name' => auth()->user()->fullname,
             'user_id' => auth()->user()->id,
             'email' => auth()->user()->email,
         ]);

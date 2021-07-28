@@ -48,7 +48,7 @@
                 <tbody>
                   <tr v-for="user in filterSearch" :key="user.id">
                     <td>{{ user.id }}</td>
-                    <td>{{ user.name }}</td>
+                    <td>{{ user.fullname }}</td>
                     <td>{{ user.email }}</td>
                     <td>{{ user.created }}</td>
                     <td>{{ user.updated }}</td>
@@ -129,7 +129,7 @@
     computed: {
       filterSearch(){
         return this.users.filter(user => {
-          return user.name.match(this.search) || user.email.match(this.search)
+          return user.fullname.match(this.search) || user.email.match(this.search)
         })
       }
     }
