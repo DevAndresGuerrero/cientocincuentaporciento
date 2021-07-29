@@ -11,7 +11,7 @@
 
   <title>150PorCiento - Andres Guerrero</title>
 
-  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+  <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
 
 </head>
 
@@ -336,7 +336,7 @@
     </div>
   </div>
 
-  <script src="{{ asset('js/app.js') }}"></script>
+  <script src="{{ secure_asset('js/app.js') }}"></script>
 
   <script type="text/javascript">
     let token = localStorage.getItem('token');
