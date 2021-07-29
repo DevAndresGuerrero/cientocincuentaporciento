@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid mt-4">
     <div class="row">
-      <div class="col-12 col-md-10 col-lg-8 col-xl-6">
+      <div class="col-12 col-md-10">
         <div class="card o-hidden border-0 shadow-lg my-5">
           <div class="card-header">
             <div class="d-flex">
@@ -12,11 +12,12 @@
                   type="text"
                   id="number"
                   class="form-control col-2 mx-2"
-                  v-model="number"
+                  v-model="form.number"
                 >
                 <button
                   type="button"
                   class="btn btn-success"
+                  @click="getRombo"
                 >
                   Rombotizar
                 </button>
@@ -26,22 +27,24 @@
             <!-- Nested Row within Card Body -->
             <div class="row justify-content-center">
               <div class="col-12">
-                <div class="p-2">
-                  <table class="table table-bordered">
-                    <!-- For A -->
-                    <tr v-for="(col, i) in matriz" :key="i">
+                <div class="p-5">
+                  <div class="table-responsive">
+                    <table class="table table-bordered">
+                      <!-- For A -->
+                      <tr v-for="(col, i) in matriz" :key="i">
 
-                      <!-- For B -->
-                      <td
-                        class="text-center font-weight-bolder"
-                        v-for="(row, j) in col" :key="j">
-                        {{ row }}
-                      </td>
-                      <!-- End For B -->
+                        <!-- For B -->
+                        <td
+                          class="text-center font-weight-bolder"
+                          v-for="(row, j) in col" :key="j">
+                          {{ row }}
+                        </td>
+                        <!-- End For B -->
 
-                    </tr>
-                    <!-- End For A -->
-                  </table>
+                      </tr>
+                      <!-- End For A -->
+                    </table>
+                  </div>
                 </div>
               </div>
             </div>
@@ -64,12 +67,14 @@
     data() {
       return {
         matriz: [],
-        number: 10,
+        form: {
+          number: 5
+        }
       }
     },
     methods: {
       getRombo(){
-        axios.post('/api/rombo')
+        axios.post('/api/rombo', this.form)
           .then((res) => this.matriz = res.data)
           .catch(err => console.error(err))
       }
