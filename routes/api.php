@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\RomboController;
 
 Route::group([
     'middleware' => 'api',
@@ -18,3 +19,5 @@ Route::group([
 Route::group(['middleware' => 'api'], function(){
     Route::apiResource('users', UserController::class);
 });
+
+Route::post('rombo', RomboController::class);

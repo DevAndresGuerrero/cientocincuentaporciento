@@ -11,12 +11,13 @@
                 <input
                   type="text"
                   id="number"
-                  class="form-control col-1 mx-2"
-                  v-model="number">
+                  class="form-control col-2 mx-2"
+                  v-model="number"
+                >
                 <button
                   type="button"
                   class="btn btn-success"
-                  @click="drawTable">
+                >
                   Rombotizar
                 </button>
             </div>
@@ -28,28 +29,13 @@
                 <div class="p-2">
                   <table class="table table-bordered">
                     <!-- For A -->
-                    <tr v-for="(a, id1) in number" :key="id1">
+                    <tr v-for="(col, i) in matriz" :key="i">
 
                       <!-- For B -->
                       <td
-                        class="text-center"
-                        v-for="(b, id2) in number" :key="id2">
-                        <div v-if="a <= Math.round(number/2)">
-                          <div v-if="a == c && (b>=il && b<=ir)">
-                            #
-                          </div>
-                          <div v-else>
-                            &nbsp;
-                          </div>
-                        </div>
-                        <div v-else>
-                          <div v-if="a == c && (b>=il && b<=ir)">
-                            #
-                          </div>
-                          <div v-else>
-                            &nbsp;
-                          </div>
-                        </div>
+                        class="text-center font-weight-bolder"
+                        v-for="(row, j) in col" :key="j">
+                        {{ row }}
                       </td>
                       <!-- End For B -->
 
@@ -73,70 +59,20 @@
       if (!User.loggedIn()) {
         this.$router.push({name: '/'});
       }
+      this.getRombo();
     },
     data() {
       return {
-        number: 10,
-        user:"ANDRES",
-        l:"",
-        t:0,
-        c:1,
-        d:0,
-        i:0,
-        il:0,
-        ir:0,
         matriz: [],
+        number: 10,
       }
-    },
-    mounted() {
-      this.i = Math.round(this.number/2);
-      this.il = this.i;
-      this.ir = this.i;
-      this.drawTable();
     },
     methods: {
-      drawTable(){
-        let indice = Math.round(this.number/2);
-        let il = indice;
-        let ir = indice;
-
-        for (let a=1; a<=this.number; a++) {
-          for (let b=1; b<=this.number; b++) {
-            if(this.t==this.user.length){
-              this.t=0;
-            }
-            this.l=this.user[this.t];
-
-            if(a<=indice){
-              if (a==this.c && (b>=il && b<=ir)) {
-                this.matriz[a][b] = this.l;
-                this.t++;
-              } else {
-                this.matriz[a][b] = " ";
-              }
-            } else {
-              if (a==this.c && (b>=il && b<=ir)) {
-                this.matriz[a][b] = this.l;
-                this.t++;
-              } else {
-                this.matriz[a][b] = " ";
-              }
-            }
-          }
-
-          this.c++;
-          this.d++;
-          if(this.d<indice){
-            il--;
-            ir++;
-          } else {
-            il++;
-            ir--;
-          }
-        }
-
-        return this.matriz;
+      getRombo(){
+        axios.post('/api/rombo')
+          .then((res) => this.matriz = res.data)
+          .catch(err => console.error(err))
       }
-    },
+    }
   }
 </script>

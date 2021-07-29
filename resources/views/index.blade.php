@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>API Rest - Andres Guerrero</title>
+  <title>150PorCiento - Andres Guerrero</title>
 
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
@@ -37,7 +37,7 @@
             <div class="sidebar-brand-icon rotate-n-15">
               <i class="fas fa-laugh-wink"></i>
             </div>
-            <div class="sidebar-brand-text mx-3">API Rest</div>
+            <div class="sidebar-brand-text mx-3">150PorCiento</div>
           </router-link>
 
           <!-- Divider -->
