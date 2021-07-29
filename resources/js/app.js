@@ -5,6 +5,12 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
+if (process.env.MIX_ENV_MODE === 'production') {
+  Vue.config.devtools = false;
+  Vue.config.debug = false;
+  Vue.config.silent = true;
+}
+
 // Router Imported.
 import { routes } from './routes';
 
